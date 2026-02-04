@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pro ChemStation Ultimate</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header class="glass-panel">
+            <div class="logo">CHEM<span class="highlight">STATION</span> ULTRA</div>
+            <div class="controls">
+                <!-- Info Button Added Here -->
+                <a href="info.html" class="btn" style="text-decoration: none; margin-right: 10px;">ℹ️ Info</a>
+                <button id="reset-btn" class="btn">Resetează</button>
+                <button id="filter-btn" class="btn">Filtrează</button>
+            </div>
+        </header>
+
+        <main class="lab-workspace">
+            <div class="side-panel left glass-panel">
+                <h3><span class="icon">💻</span> Auto-Pilot</h3>
+                <div class="scroll-list" id="auto-functions"></div>
+            </div>
+
+            <div class="center-stage">
+                <canvas id="particle-overlay"></canvas>
+
+                <div class="apparatus-stand">
+                    <div class="clamp"></div>
+                    <div class="pole"></div>
+                </div>
+
+                <div id="main-vessel" class="vessel">
+                    <div class="liquid-mask">
+                        <canvas id="fluid-canvas"></canvas>
+                    </div>
+                </div>
+
+                <div class="hotplate-base glass-panel">
+                    <div class="heating-element" id="heater-coil"></div>
+                    <div class="knobs">
+                        <div class="knob-group">
+                            <label>HEAT</label>
+                            <input type="range" id="heat-slider" min="0" max="100" value="0">
+                        </div>
+                        <div class="knob-group">
+                            <label>STIR</label>
+                            <input type="range" id="stir-slider" min="0" max="100" value="0">
+                        </div>
+                    </div>
+                    <div class="display" id="temp-display">20°C</div>
+                </div>
+            </div>
+
+            <div class="side-panel right glass-panel">
+                <h3><span class="icon">🧪</span> Inventar</h3>
+                <div class="search-bar">
+                    <input type="text" id="chem-search" placeholder="Caută substanță...">
+                </div>
+                <div class="scroll-list grid-view" id="chemical-inventory"></div>
+            </div>
+        </main>
+
+        <div id="result-overlay" class="hidden">
+            <div class="result-card glass-panel">
+                <div class="result-icon">✨</div>
+                <h2 id="result-title">Experiment Success!</h2>
+                <p id="result-desc">You have created Polietena.</p>
+                <button class="btn"
+                    onclick="document.getElementById('result-overlay').classList.add('hidden')">Continue</button>
+            </div>
+        </div>
+
+        <div id="toast-container"></div>
+    </div>
+
+    <script src="experiments.js"></script>
+    <script src="lab.js"></script>
+</body>
+
+</html>
